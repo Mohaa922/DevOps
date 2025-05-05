@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+<title>Zero to Hero en DevOps - Outils et Commandes de Base</title>
+<style>
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    margin: 0; padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #1e1e2f;
+    color: #e0e0e0;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 1rem 1rem 3rem 1rem;
+  }
+  h1, h2, h3 {
+    font-weight: 700;
+    color: #61dafb;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  h1 {
+    font-size: 1.8rem;
+    text-align:center;
+  }
+  h2 {
+    font-size: 1.4rem;
+    border-bottom: 2px solid #61dafb;
+    padding-bottom: 0.3rem;
+  }
+  h3 {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+  p {
+    margin: 0.3rem 0 1rem 0;
+  }
+  code {
+    background: #2d2d44;
+    color: #ade498;
+    border-radius: 4px;
+    padding: 0.2rem 0.4rem;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+  }
+  pre {
+    background: #2d2d44;
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 0.9rem;
+    overflow-x: auto;
+    margin-bottom: 1rem;
+  }
+  blockquote {
+    border-left: 4px solid #61dafb;
+    margin: 1rem 0;
+    padding-left: 1rem;
+    color: #a3d8f4;
+    font-style: italic;
+  }
+  section {
+    margin-bottom: 2rem;
+  }
+  /* Button */
+  button {
+    background: #61dafb;
+    border: none;
+    color: #1e1e2f;
+    font-weight: 700;
+    padding: 0.6rem 1.2rem;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+  button:hover {
+    background: #21a1f1;
+  }
+  /* Interactive Terminal */
+  #terminal {
+    background: #000;
+    color: #0f0;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    border-radius: 6px;
+    padding: 1rem;
+    max-height: 250px;
+    overflow-y: auto;
+    user-select:none;
+  }
+  #commandInput {
+    width: 100%;
+    padding: 0.5rem;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1rem;
+    border-radius: 4px;
+    border: none;
+    margin-top: 0.5rem;
+    background: #222;
+    color: #0f0;
+  }
+  #commandInput::placeholder {
+    color: #555;
+  }
+  /* Responsive for small screen */
+  @media (max-width: 400px) {
+    body {
+      padding: 0.5rem 0.5rem 2rem 0.5rem;
+      font-size: 14px;
+    }
+    h1 {
+      font-size: 1.4rem;
+    }
+  }
+</style>
+</head>
+<body>
+  <h1>Zero to Hero en DevOps</h1>
+  <p>Bienvenue dans ce programme interactif pour découvrir les outils DevOps essentiels et apprendre les commandes de base étape par étape.</p>
+  <p>Chaque section présente un outil clé, ses concepts fondamentaux, ainsi que les commandes les plus courantes pour débuter.</p>
+  <p>Essayez d'exécuter des commandes dans le terminal simulé en bas pour mieux comprendre leur effet.</p>
+
+  <section id="intro">
+    <h2>Introduction à DevOps</h2>
+    <p><strong>DevOps</strong> est une approche qui combine le développement logiciel (Dev) et les opérations informatiques (Ops) pour améliorer la collaboration, automatiser les processus et accélérer la livraison logicielle.</p>
+    <blockquote>« DevOps est une culture, un mouvement, ou une pratique qui vise à unir le développement logiciel et les opérations. »</blockquote>
+  </section>
+
+  <section id="git">
+    <h2>1. Git - Contrôle de version</h2>
+    <p>Git est un système de contrôle de version distribué qui permet de suivre les modifications du code et collaborer efficacement.</p>
+
+    <h3>Commandes de base Git :</h3>
+    <pre><code>git init
+git clone &lt;url&gt;
+git status
+git add &lt;fichier&gt;
+git commit -m "message"
+git push
+git pull</code></pre>
+    <p><strong>Explications :</strong></p>
+    <ul>
+      <li><code>git init</code> : Initialise un nouveau dépôt Git.</li>
+      <li><code>git clone &lt;url&gt;</code> : Copie un dépôt distant localement.</li>
+      <li><code>git status</code> : Montre l'état des fichiers dans votre dépôt local.</li>
+      <li><code>git add &lt;fichier&gt;</code> : Prépare des fichiers pour le commit.</li>
+      <li><code>git commit -m "message"</code> : Enregistre les changements avec un message.</li>
+      <li><code>git push</code> : Envoie vos commits vers un dépôt distant.</li>
+      <li><code>git pull</code> : Récupère les changements d'un dépôt distant.</li>
+    </ul>
+  </section>
+
+  <section id="docker">
+    <h2>2. Docker - Conteneurisation</h2>
+    <p>Docker permet de créer, déployer et exécuter des applications dans des conteneurs légers et portables.</p>
+
+    <h3>Commandes de base Docker :</h3>
+    <pre><code>docker build -t nom_image .
+docker images
+docker run -it nom_image
+docker ps
+docker stop &lt;container_id&gt;
+docker rm &lt;container_id&gt;
+docker rmi &lt;image_id&gt;</code></pre>
+    <p><strong>Explications :</strong></p>
+    <ul>
+      <li><code>docker build</code> : Crée une image Docker à partir du Dockerfile.</li>
+      <li><code>docker images</code> : Liste les images locales.</li>
+      <li><code>docker run</code> : Exécute un conteneur basé sur une image.</li>
+      <li><code>docker ps</code> : Affiche les conteneurs en cours d'exécution.</li>
+      <li><code>docker stop</code> : Arrête un conteneur en cours.</li>
+      <li><code>docker rm</code> : Supprime un conteneur arrêté.</li>
+      <li><code>docker rmi</code> : Supprime une image Docker locale.</li>
+    </ul>
+  </section>
+
+  <section id="jenkins">
+    <h2>3. Jenkins - Intégration Continue</h2>
+    <p>Jenkins est un serveur d'automatisation open-source pour réaliser l'intégration continue et la livraison continue (CI/CD).</p>
+
+    <h3>Commandes utiles Jenkins (via CLI ou pipeline) :</h3>
+    <pre><code>java -jar jenkins-cli.jar -s http://localhost:8080/ build nom_job
+java -jar jenkins-cli.jar -s http://localhost:8080/ list-jobs
+java -jar jenkins-cli.jar -s http://localhost:8080/ get-job nom_job</code></pre>
+    <p>Dans les pipelines Jenkins, on utilise souvent la syntaxe Groovy pour définir <code>stage</code>, <code>steps</code> et automatiser les builds.</p>
+  </section>
+
+  <section id="kubernetes">
+    <h2>4. Kubernetes - Orchestration de conteneurs</h2>
+    <p>Kubernetes automatise le déploiement, la gestion et la mise à l'échelle des applications conteneurisées.</p>
+
+    <h3>Commandes de base kubectl :</h3>
+    <pre><code>kubectl cluster-info
+kubectl get nodes
+kubectl get pods
+kubectl describe pod &lt;nom_pod&gt;
+kubectl logs &lt;nom_pod&gt;
+kubectl apply -f fichier.yaml
+kubectl delete pod &lt;nom_pod&gt;</code></pre>
+    <p>Ces commandes permettent de consulter l'état du cluster, des pods, appliquer des configurations et consulter les logs.</p>
+  </section>
+
+  <section id="ansible">
+    <h2>5. Ansible - Automatisation de la configuration</h2>
+    <p>Ansible simplifie la gestion et l'automatisation des configurations sur plusieurs serveurs.</p>
+
+    <h3>Commandes de base Ansible :</h3>
+    <pre><code>ansible all -m ping
+ansible-playbook playbook.yml
+ansible -m shell -a "uptime" nom_serveur
+ansible -i hosts all -m yum -a "name=httpd state=present"</code></pre>
+    <p><strong>Explication :</strong> <code>ansible-playbook</code> exécute des scripts de provisioning nommés playbooks.</p>
+  </section>
+
+  <section id="terraform">
+    <h2>6. Terraform - Infrastructure as Code</h2>
+    <p>Terraform permet de définir et gérer votre infrastructure via des fichiers de configuration déclaratifs.</p>
+
+    <h3>Commandes de base Terraform :</h3>
+    <pre><code>terraform init
+terraform plan
+terraform apply
+terraform destroy
+terraform fmt
+terraform validate</code></pre>
+    <p>Ces commandes initialisent un projet, prévoient les changements, appliquent, détruisent et valident la configuration.</p>
+  </section>
+
+  <section id="interactive-terminal">
+    <h2>Terminal Simulé - Essayez quelques commandes !</h2>
+    <p>Entrez une commande DevOps basique ci-dessous (exemples : <code>git status</code>, <code>docker ps</code>, <code>kubectl get pods</code>) :</p>
+    <div id="terminal" aria-live="polite" aria-label="Terminal simulé" role="region"></div>
+    <input type="text" id="commandInput" placeholder="Tapez une commande DevOps et appuyez sur Entrée" aria-label="Entrée de commande"/>
+    <button id="clearBtn" aria-label="Effacer terminal">Effacer terminal</button>
+  </section>
+
+<script>
+  const terminal = document.getElementById('terminal');
+  const commandInput = document.getElementById('commandInput');
+  const clearBtn = document.getElementById('clearBtn');
+
+  // Mapping commands to example output simulating DevOps basics
+  const commandResponses = {
+    'git status': `Sur la branche master
+Rien à valider, la copie de travail est propre`,
+    'git init': `Initialisation d'un dépôt Git vide dans /votre/dossier/.git/`,
+    'docker ps': `CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES`,
+    'docker images': `REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
+myapp        latest    d1b55fd07600   2 days ago    500MB`,
+    'kubectl get pods': `NAME                       READY   STATUS    RESTARTS   AGE
+myapp-deployment-abc123     1/1     Running   0          3h`,
+    'kubectl cluster-info': `Kubernetes control plane is running at https://127.0.0.1:6443
+CoreDNS is running at https://127.0.0.1:6443/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy`,
+    'ansible all -m ping': `server1 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}
+server2 | SUCCESS => {
+    "changed": false,
+    "ping": "pong"
+}`,
+    'terraform plan': `Plan: 2 to add, 0 to change, 0 to destroy.
+`,
+    'terraform apply': `Apply complete! Resources: 2 added, 0 changed, 0 destroyed.`,
+  };
+
+  function printToTerminal(text) {
+    terminal.innerText += text + '\n';
+    terminal.scrollTop = terminal.scrollHeight;
+  }
+
+  function handleCommand(input) {
+    if (!input.trim()) return;
+    printToTerminal('> ' + input);
+    const lcInput = input.trim().toLowerCase();
+    if (commandResponses[lcInput]) {
+      printToTerminal(commandResponses[lcInput]);
+    } else {
+      printToTerminal(`Commande non reconnue ou non supportée dans ce simulateur: "${input}"`);
+    }
+  }
+
+  commandInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      handleCommand(commandInput.value);
+      commandInput.value = '';
+    }
+  });
+
+  clearBtn.addEventListener('click', () => {
+    terminal.innerText = '';
+    commandInput.focus();
+  });
+
+</script>
+</body>
+</html>
+
